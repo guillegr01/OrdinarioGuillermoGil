@@ -10,5 +10,5 @@ const client = new MongoClient(MONGO_URL);
 await client.connect();
 console.info("Connected succesfully to DDBB");
 
-const db = client.db("BBDD_Ordinario");
+const _db = client.db("BBDD_Ordinario");
 
