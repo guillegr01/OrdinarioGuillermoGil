@@ -47,7 +47,7 @@ export const resolvers = {
 
             const responseCity: APICity = await dataCity.json();
             
-            const urlWeather = `https://api.api-ninjas.com/v1/weather?lat=${responseCity.latitude}&${responseCity.longitude}`;
+            const urlWeather = `https://api.api-ninjas.com/v1/weather?lat=${responseCity.latitude}&lon=${responseCity.longitude}`;
             const dataWeather = await fetch(urlWeather, {
                 headers: {
                     "X-Api-Key": API_KEY
