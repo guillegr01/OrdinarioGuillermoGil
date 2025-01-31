@@ -36,7 +36,7 @@ export const resolvers = {
             const API_KEY = Deno.env.get("API_KEY");
             if(!API_KEY) throw new GraphQLError("Please enter a valid API_KEY");
 
-            const urlCity = `https://api.api-ninjas.com/v1/city?name=${root.country}`;
+            const urlCity = `https://api.api-ninjas.com/v1/city?country=${root.country}`;
             const dataCity = await fetch(urlCity, {
                 headers: {
                     "X-Api-Key": API_KEY
