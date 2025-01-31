@@ -36,7 +36,7 @@ export const resolvers = {
             const API_KEY = Deno.env.get("API_KEY");
             if(!API_KEY) throw new GraphQLError("Please enter a valid API_KEY");
 
-            const urlCity = `https://api.api-ninjas.com/v1/city?country=${root.country}`;
+            const urlCity = `https://api.api-ninjas.com/v1/city?name=${root.city}`;
             const dataCity = await fetch(urlCity, {
                 headers: {
                     "X-Api-Key": API_KEY
@@ -45,9 +45,9 @@ export const resolvers = {
 
             if(dataCity.status!==200) throw new GraphQLError("API_KEY ERROR");
 
-            const responseCity: APICity = await dataCity.json();
-            const latitude = responseCity.latitude;
-            const longitude = responseCity.longitude;
+            const responseCity: APICity[] = await dataCity.json();
+            const {latitude} = responseCity[0];
+            const {longitude} = responseCity[0];
             
             const urlWeather = `https://api.api-ninjas.com/v1/weather?lat=${latitude}&lon=${longitude}`;
             const dataWeather = await fetch(urlWeather, {
