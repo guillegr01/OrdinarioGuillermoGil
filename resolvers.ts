@@ -46,8 +46,10 @@ export const resolvers = {
             if(dataCity.status!==200) throw new GraphQLError("API_KEY ERROR");
 
             const responseCity: APICity = await dataCity.json();
+            const latitude = responseCity.latitude;
+            const longitude = responseCity.longitude;
             
-            const urlWeather = `https://api.api-ninjas.com/v1/weather?lat=${responseCity.latitude}&lon=${responseCity.longitude}`;
+            const urlWeather = `https://api.api-ninjas.com/v1/weather?lat=${latitude}&lon=${longitude}`;
             const dataWeather = await fetch(urlWeather, {
                 headers: {
                     "X-Api-Key": API_KEY
