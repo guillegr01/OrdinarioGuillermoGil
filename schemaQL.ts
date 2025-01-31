@@ -5,6 +5,7 @@ export const typeDefs = `#graphql
         id:ID!
         name:String!
         address:String!
+        phone:String!
         temperature:Int!
         actualHour: String!
     }
